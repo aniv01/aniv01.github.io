@@ -42,6 +42,8 @@ It holds list of below subjects:
 - Group
 - ServiceAccount
 
+## What is 
+
 ## Scenario
 ---
 
@@ -49,7 +51,7 @@ Let's try to implement the below scenario to understand the concepts better.
 
 > Let's say you run a production EKS cluster in AWS, where you want to setup different levels of access controls to different groups of people in your project.
 >
->**admins:** should have full `admin` access to your cluster.
+>**eks-admins:** should have full `admin` access to your cluster.
 >
 >**developers:** should have full `read` access and `write` access to some api-groups.
 >
@@ -109,27 +111,9 @@ As per the official docs
 
 Continue with the below steps with the same IAM principal using which the EKS cluster was created.
 
-Let's create a `ClusterRoleBinding` called `eks-admins-ClusterRoleBinding` and reference/tag it to one of the default cluster roles called `system:masters` which grants **un-restricted** access to the cluster.
-
-Copy the below YAML block and save it as `eks-admins-ClusterRoleBinding.yaml`
-
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: eks-admins-RoleBinding
-subjects:
-- kind: Group
-  name: eks-admins
-  apiGroup: rbac.authorization.k8s.io
-roleRef:
-  kind: ClusterRole
-  name: system:masters
-  apiGroup: rbac.authorization.k8s.io
-```
-
-Run the command `kubectl apply -f eks-admins-ClusterRoleBinding.yaml`
+For full admin access we need to map our IAM role `arn:aws:iam::<ACCOUNT_NUMBER>:role/eks-admins` to `cluster-admin` **ClusterRole**
 
 ## Additional references:
 
 - [https://blog.aquasec.com/kubernetes-authorization](https://blog.aquasec.com/kubernetes-authorization)
+- [https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/](https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/)
