@@ -42,7 +42,7 @@ It holds list of below subjects:
 - Group
 - ServiceAccount
 
-## What is 
+## What is `aws-auth` configmap?
 
 ## Scenario
 ---
