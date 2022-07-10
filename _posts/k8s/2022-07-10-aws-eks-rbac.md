@@ -107,8 +107,11 @@ As per the official docs
 
 >When you create an Amazon EKS cluster, the AWS Identity and Access Management (IAM) entity user or role, such as a federated user that creates the cluster, is automatically granted `system:masters` permissions in the cluster's role-based access control (RBAC) configuration in the Amazon EKS control plane.
 
-Let's create a `ClusterRoleBinding` called `eks-admins-RoleBinding` and reference/tag it to one of the default cluster roles called `system:masters` which grants **un-restricted** access to the cluster.
+Continue with the below steps with the same IAM principal using which the EKS cluster was created.
 
+Let's create a `ClusterRoleBinding` called `eks-admins-ClusterRoleBinding` and reference/tag it to one of the default cluster roles called `system:masters` which grants **un-restricted** access to the cluster.
+
+Copy the below YAML block and save it as `eks-admins-ClusterRoleBinding.yaml`
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -124,6 +127,8 @@ roleRef:
   name: system:masters
   apiGroup: rbac.authorization.k8s.io
 ```
+
+Run the command `kubectl apply -f eks-admins-ClusterRoleBinding.yaml`
 
 ## Additional references:
 
