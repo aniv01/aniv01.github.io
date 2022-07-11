@@ -289,11 +289,11 @@ We will get `Forbidden` error as we have not granted access to developers group 
 ## Practice Exercise
 ---
 
-Create `Role` and a `RoleBinding` for interns and grant then to list pods and deployments to only `production` namespace.
+Create a `Role` and `RoleBinding` for `interns` and grant them to list pods and deployments under `production` namespace.
 
-Map the `interns` group to IAM role `arn:aws:iam::<ACCOUNT_NUMBER>:role/interns`
+Map the `interns` group to IAM role `arn:aws:iam::<ACCOUNT_NUMBER>:role/interns` under `aws-auth` config map.
 
-## Additional references:
+## Additional references
 ---
 
 - [https://blog.aquasec.com/kubernetes-authorization](https://blog.aquasec.com/kubernetes-authorization)
