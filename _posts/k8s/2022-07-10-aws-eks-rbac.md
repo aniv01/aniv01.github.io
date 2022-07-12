@@ -34,7 +34,7 @@ Role sets permissions at `namespace` level. ClusterRole sets permissions at `clu
 ## What is RoleBinding and ClusterRoleBinding?
 ---
 
-A `RoleBinding` and the `ClusterRoleBinding` grants the permissions defined in a role to a user or set of users.
+A `RoleBinding` and the `ClusterRoleBinding` grants permissions defined in a role to a user or set of users.
 
 It holds list of below subjects:
 
@@ -43,6 +43,10 @@ It holds list of below subjects:
 - ServiceAccount
 
 ## What is `aws-auth` configmap?
+
+The crux of this integration between IAM and RBAC is the `aws-auth` ConfigMap applied to the Amazon EKS cluster that provides the mappings between IAM principals (roles/users) and Kubernetes Subjects (Users/Groups).
+
+Read more about this [here](https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/)
 
 ## Scenario
 ---
